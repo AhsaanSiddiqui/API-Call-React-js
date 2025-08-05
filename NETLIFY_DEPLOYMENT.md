@@ -74,14 +74,14 @@ Your project is now fully configured for Netlify deployment with:
 
 Your app automatically detects the environment:
 
-- **Development**: Uses `http://localhost:3001/api`
+- **Development**: Uses `https://fakestoreapi.com/products`
 - **Production**: Uses `/api` (Netlify Functions)
 
 ### Environment Variables
 
 | Variable            | Development                         | Production                          | Description  |
 | ------------------- | ----------------------------------- | ----------------------------------- | ------------ |
-| `VITE_API_BASE_URL` | `http://localhost:3001/api`         | `/api`                              | API base URL |
+| `VITE_API_BASE_URL` | `https://fakestoreapi.com/products` | `/api`                              | API base URL |
 | `EXTERNAL_API_URL`  | `https://fakestoreapi.com/products` | `https://fakestoreapi.com/products` | External API |
 
 ## 🔍 Testing Your Deployment

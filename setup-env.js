@@ -3,7 +3,7 @@ import path from 'path';
 
 // Environment variables for development
 const envContent = `# API Configuration
-VITE_API_BASE_URL=http://localhost:3001/api
+VITE_API_BASE_URL=https://fakestoreapi.com/products
 
 # Server Configuration (for backend)
 PORT=3001
@@ -33,4 +33,4 @@ try {
   console.log('1. Create a .env file in the root directory');
   console.log('2. Copy the content from environment.env');
   console.log('3. Save the file');
-} 
+}

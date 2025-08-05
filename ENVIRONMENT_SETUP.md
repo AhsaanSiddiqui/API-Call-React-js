@@ -3,17 +3,19 @@
 ## 📁 Environment Files
 
 ### 1. Frontend Environment (.env)
+
 Create a `.env` file in the root directory for frontend variables:
 
 ```bash
 # API Configuration
-VITE_API_BASE_URL=http://localhost:3001/api
+VITE_API_BASE_URL=https://fakestoreapi.com/products
 
 # Development Configuration
 NODE_ENV=development
 ```
 
 ### 2. Backend Environment (.env)
+
 Create a `.env` file in the root directory for backend variables:
 
 ```bash
@@ -31,15 +33,18 @@ CORS_ORIGIN=http://localhost:5173
 ## 🔧 How to Set Up
 
 ### Step 1: Create Environment Files
+
 1. Copy `environment.env` to `.env`
 2. Or create `.env` files manually with the content above
 
 ### Step 2: Install Dependencies
+
 ```bash
 npm install
 ```
 
 ### Step 3: Start the Application
+
 ```bash
 # Start both frontend and backend
 npm start
@@ -51,11 +56,13 @@ npm run server # Backend only
 
 ## 🌍 Environment Variables Explained
 
-### Frontend Variables (VITE_*)
+### Frontend Variables (VITE\_\*)
+
 - `VITE_API_BASE_URL`: Base URL for API calls (used in React app)
 - `NODE_ENV`: Environment mode (development/production)
 
 ### Backend Variables
+
 - `PORT`: Server port number (default: 3001)
 - `NODE_ENV`: Environment mode
 - `EXTERNAL_API_URL`: External API base URL
@@ -64,10 +71,12 @@ npm run server # Backend only
 ## 🚀 Production Deployment
 
 ### For Netlify (Frontend)
+
 1. Set environment variables in Netlify dashboard:
    - `VITE_API_BASE_URL`: Your production API URL
 
 ### For Backend Deployment
+
 1. Set environment variables in your hosting platform:
    - `PORT`: Your server port
    - `EXTERNAL_API_URL`: External API URL
@@ -76,9 +85,10 @@ npm run server # Backend only
 ## 📝 Example .env Files
 
 ### Development (.env)
+
 ```bash
 # Frontend
-VITE_API_BASE_URL=http://localhost:3001/api
+VITE_API_BASE_URL=https://fakestoreapi.com/products
 
 # Backend
 PORT=3001
@@ -88,6 +98,7 @@ CORS_ORIGIN=http://localhost:5173
 ```
 
 ### Production (.env.production)
+
 ```bash
 # Frontend
 VITE_API_BASE_URL=https://your-backend-domain.com/api
@@ -100,7 +111,8 @@ CORS_ORIGIN=https://your-frontend-domain.com
 ```
 
 ## 🔒 Security Notes
+
 - Never commit `.env` files to version control
 - Use different environment files for different environments
 - Keep sensitive data in environment variables
-- Use strong, unique values for production 
+- Use strong, unique values for production
