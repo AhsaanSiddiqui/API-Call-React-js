@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { getProductUrl } from './config/api'
 import './App.css'
@@ -12,6 +12,13 @@ function App() {
   const [updateLoading, setUpdateLoading] = useState(false)
 
   // API configuration is now imported from config/api.js
+
+  // Clear error when product is successfully loaded
+  useEffect(() => {
+    if (product && !loading) {
+      setError('')
+    }
+  }, [product, loading])
 
   const fetchProduct = async () => {
     if (!productId.trim()) {
@@ -27,12 +34,17 @@ function App() {
       const response = await axios.get(getProductUrl(productId))
       const productData = response.data
       
+      // Check if we have valid data
+      if (!productData || !productData.id) {
+        throw new Error('Invalid product data received')
+      }
+      
       // Transform FakeStoreAPI data to match our expected structure
       const transformedProduct = {
         id: productData.id,
         title: productData.title,
         current_price: {
-          value: productData.price,
+          value: productData.price || 0,
           currency_code: 'USD'
         }
       }
@@ -40,7 +52,9 @@ function App() {
       setProduct(transformedProduct)
       setNewPrice(transformedProduct.current_price.value.toString())
     } catch (err) {
-      setError(err.response?.data?.message || 'Failed to fetch product')
+      console.error('Error fetching product:', err)
+      setError('Failed to fetch product')
+      setProduct(null)
     } finally {
       setLoading(false)
     }
