@@ -25,8 +25,20 @@ function App() {
 
     try {
       const response = await axios.get(getProductUrl(productId))
-      setProduct(response.data)
-      setNewPrice(response.data.current_price.value.toString())
+      const productData = response.data
+      
+      // Transform FakeStoreAPI data to match our expected structure
+      const transformedProduct = {
+        id: productData.id,
+        title: productData.title,
+        current_price: {
+          value: productData.price,
+          currency_code: 'USD'
+        }
+      }
+      
+      setProduct(transformedProduct)
+      setNewPrice(transformedProduct.current_price.value.toString())
     } catch (err) {
       setError(err.response?.data?.message || 'Failed to fetch product')
     } finally {
@@ -44,20 +56,19 @@ function App() {
     setError('')
 
     try {
-      const updateData = {
-        id: product.id,
-        title: product.title,
+      // Since FakeStoreAPI doesn't support PUT requests, we'll update local state
+      const updatedProduct = {
+        ...product,
         current_price: {
           value: parseFloat(newPrice),
           currency_code: product.current_price.currency_code
         }
       }
 
-      const response = await axios.put(getProductUrl(productId), updateData)
-      setProduct(response.data)
+      setProduct(updatedProduct)
       setError('')
     } catch (err) {
-      setError(err.response?.data?.message || 'Failed to update product price')
+      setError('Failed to update product price')
     } finally {
       setUpdateLoading(false)
     }

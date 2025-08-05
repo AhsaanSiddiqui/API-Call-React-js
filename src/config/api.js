@@ -1,12 +1,11 @@
 // API Configuration
 export const API_CONFIG = {
-  // Base URL for API calls
-  BASE_URL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001/api',
+  // Base URL for API calls - use FakeStoreAPI directly
+  BASE_URL: import.meta.env.VITE_API_BASE_URL || 'https://fakestoreapi.com',
 
   // API Endpoints
   ENDPOINTS: {
     PRODUCTS: '/products',
-    HEALTH: '/health',
   },
 
   // Request timeout (in milliseconds)
