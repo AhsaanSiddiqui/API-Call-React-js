@@ -3,7 +3,7 @@ import path from 'path';
 
 // Environment variables for development
 const envContent = `# API Configuration
-VITE_API_BASE_URL=https://fakestoreapi.com/products
+VITE_API_BASE_URL=https://fakestoreapi.com
 
 # Server Configuration (for backend)
 PORT=3001

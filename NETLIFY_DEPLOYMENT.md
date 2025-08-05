@@ -74,15 +74,15 @@ Your project is now fully configured for Netlify deployment with:
 
 Your app automatically detects the environment:
 
-- **Development**: Uses `https://fakestoreapi.com/products`
+- **Development**: Uses `https://fakestoreapi.com`
 - **Production**: Uses `/api` (Netlify Functions)
 
 ### Environment Variables
 
-| Variable            | Development                         | Production                          | Description  |
-| ------------------- | ----------------------------------- | ----------------------------------- | ------------ |
-| `VITE_API_BASE_URL` | `https://fakestoreapi.com/products` | `/api`                              | API base URL |
-| `EXTERNAL_API_URL`  | `https://fakestoreapi.com/products` | `https://fakestoreapi.com/products` | External API |
+| Variable            | Development                | Production                 | Description  |
+| ------------------- | -------------------------- | -------------------------- | ------------ |
+| `VITE_API_BASE_URL` | `https://fakestoreapi.com` | `/api`                     | API base URL |
+| `EXTERNAL_API_URL`  | `https://fakestoreapi.com` | `https://fakestoreapi.com` | External API |
 
 ## 🔍 Testing Your Deployment
 

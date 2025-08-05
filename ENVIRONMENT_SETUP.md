@@ -8,7 +8,7 @@ Create a `.env` file in the root directory for frontend variables:
 
 ```bash
 # API Configuration
-VITE_API_BASE_URL=https://fakestoreapi.com/products
+VITE_API_BASE_URL=https://fakestoreapi.com
 
 # Development Configuration
 NODE_ENV=development
@@ -88,7 +88,7 @@ npm run server # Backend only
 
 ```bash
 # Frontend
-VITE_API_BASE_URL=https://fakestoreapi.com/products
+VITE_API_BASE_URL=https://fakestoreapi.com
 
 # Backend
 PORT=3001
