@@ -1,12 +1,21 @@
 import express from 'express';
 import cors from 'cors';
 import axios from 'axios';
+import dotenv from 'dotenv';
+
+// Load environment variables
+dotenv.config();
 
 const app = express();
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 // Middleware
-app.use(cors());
+app.use(
+  cors({
+    origin: process.env.CORS_ORIGIN || 'http://localhost:5173',
+    credentials: true,
+  })
+);
 app.use(express.json());
 
 // In-memory database for prices (in a real app, this would be a database)
@@ -24,8 +33,10 @@ app.get('/api/products/:id', async (req, res) => {
     const productId = parseInt(req.params.id);
 
     // Fetch product data from external API
+    const externalApiUrl =
+      process.env.EXTERNAL_API_URL || 'https://fakestoreapi.com';
     const externalResponse = await axios.get(
-      `https://fakestoreapi.com/products/${productId}`
+      `${externalApiUrl}/products/${productId}`
     );
     const productData = externalResponse.data;
 
@@ -72,8 +83,10 @@ app.put('/api/products/:id', async (req, res) => {
     };
 
     // Fetch updated product data
+    const externalApiUrl =
+      process.env.EXTERNAL_API_URL || 'https://fakestoreapi.com';
     const externalResponse = await axios.get(
-      `https://fakestoreapi.com/products/${productId}`
+      `${externalApiUrl}/products/${productId}`
     );
     const productData = externalResponse.data;
 

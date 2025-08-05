@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import axios from 'axios'
+import { getProductUrl } from './config/api'
 import './App.css'
 
 function App() {
@@ -10,8 +11,7 @@ function App() {
   const [newPrice, setNewPrice] = useState('')
   const [updateLoading, setUpdateLoading] = useState(false)
 
-  // API base URL - you can change this to your backend URL
-  const API_BASE_URL = 'http://localhost:3001/api'
+  // API configuration is now imported from config/api.js
 
   const fetchProduct = async () => {
     if (!productId.trim()) {
@@ -24,7 +24,7 @@ function App() {
     setProduct(null)
 
     try {
-      const response = await axios.get(`${API_BASE_URL}/products/${productId}`)
+      const response = await axios.get(getProductUrl(productId))
       setProduct(response.data)
       setNewPrice(response.data.current_price.value.toString())
     } catch (err) {
@@ -53,7 +53,7 @@ function App() {
         }
       }
 
-      const response = await axios.put(`${API_BASE_URL}/products/${productId}`, updateData)
+      const response = await axios.put(getProductUrl(productId), updateData)
       setProduct(response.data)
       setError('')
     } catch (err) {
